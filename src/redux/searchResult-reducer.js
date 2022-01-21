@@ -1,0 +1,148 @@
+import { bookAPI } from "../api/api";
+
+const LOAD_BOOK = 'LOAD-BOOK';
+const LOAD_SEARCH_RESULTS = 'LOAD-SEARCH-RESULTS';
+const SET_TOTAL_ITEMS = 'SET-TOTAL-ITEMS';
+const TOGGLE_IS_FETCHING = 'TOGGLE-IS-FETCHING';
+const SET_BOOK_CARD = 'SET-BOOK-CARD';
+const LOAD_MORE = 'LOAD-MORE';
+const INCREASE_BOOKS_COUNT = 'INCREASE-BOOKS-COUNT';
+const SET_FETCH_ERROR = 'SET_FETCH_ERROR';
+const CLEAN_RESULTS = 'CLEAN-RESULTS';
+
+let initialState = {
+    results: [],
+    totalItems: 0,
+    selfLink: '',
+    isFetching: true,
+    bookCard: null,
+    booksCount: 30,
+    isFetchError: false,
+};
+
+const searchResultsReducer = (state = initialState, action) => {
+    switch (action.type) {
+
+        case LOAD_BOOK: {
+            return {
+                ...state,
+            };
+        }
+        case LOAD_SEARCH_RESULTS: {
+            return {
+                ...state,
+                results: action.results,
+            }
+        }
+
+        case SET_TOTAL_ITEMS: {
+            return {
+                ...state,
+                totalItems: action.totalItems,
+            }
+        }
+
+        case TOGGLE_IS_FETCHING: {
+            return {
+                ...state,
+                isFetching: action.isFetching,
+            }
+        }
+
+        case SET_BOOK_CARD: {
+            return {
+                ...state,
+                bookCard: action.bookCard,
+            }
+        }
+
+        case LOAD_MORE: {
+            return {
+                ...state,
+                results: [...state.results, ...action.moreBooks],
+            }
+        }
+        case INCREASE_BOOKS_COUNT: {
+            return {
+                ...state,
+                booksCount: state.booksCount + 30,
+            }
+        }
+        case SET_FETCH_ERROR: {
+            return {
+                ...state,
+                isFetchError: action.isError,
+            }
+        }
+        case CLEAN_RESULTS: {
+            return {
+                ...state,
+                results: [],
+            }
+        }
+
+        default:
+            return state;
+    }
+}
+
+export const loadBook = () => ({ type: LOAD_BOOK });
+export const loadSearchResults = (results) => ({ type: LOAD_SEARCH_RESULTS, results });
+export const setTotalItems = (totalItems) => ({ type: SET_TOTAL_ITEMS, totalItems });
+export const toggleIsFetching = (isFetching) => ({ type: TOGGLE_IS_FETCHING, isFetching });
+export const setBookCard = (bookCard) => ({ type: SET_BOOK_CARD, bookCard });
+export const loadMore = (moreBooks) => ({ type: LOAD_MORE, moreBooks });
+export const increaseBooksCount = () => ({ type: INCREASE_BOOKS_COUNT })
+export const setFetchError = (isError) => ({ type: SET_FETCH_ERROR, isError })
+export const cleanResults = () => ({ type: CLEAN_RESULTS, })
+
+export const startSearchBook = (searchString, orderBy, category) => {
+    return async (dispatch) => {
+        try {
+            dispatch(setFetchError(false));
+            dispatch(toggleIsFetching(true));
+            let response = await bookAPI.searchBook(searchString, orderBy, category);
+            dispatch(toggleIsFetching(false));
+            dispatch(setTotalItems(response.data.totalItems));
+            if (response.data.totalItems != 0) {
+                dispatch(loadSearchResults(response.data.items));
+            } else {
+                dispatch(cleanResults());
+            }
+        } catch (e) {
+            dispatch(setFetchError(true));
+            dispatch(toggleIsFetching(false));
+        }
+    }
+}
+
+export const getBookCard = (userId) => {
+    return async (dispatch) => {
+        try {
+            dispatch(setFetchError(false));
+            let response = await bookAPI.showBookCard(userId);
+            dispatch(setBookCard(response.data));
+        } catch (e) {
+            dispatch(setFetchError(true));
+            dispatch(toggleIsFetching(false));
+        }
+    };
+}
+
+export const loadMoreBooks = (booksCount, previousState, searchString) => {
+
+    return async (dispatch) => {
+        try {
+            dispatch(setFetchError(false));
+            let response = await bookAPI.loadMoreButton(booksCount, searchString);
+            dispatch(increaseBooksCount());
+            dispatch(loadMore(response.data.items, previousState));
+        } catch (e) {
+            dispatch(setFetchError(true));
+            dispatch(toggleIsFetching(false));
+        }
+    }
+}
+
+export default searchResultsReducer;
+

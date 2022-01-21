@@ -1,0 +1,35 @@
+.book_card_row{
+    display: flex;
+    flex-wrap: wrap;
+}
+.book_card{
+    display: flex;
+}
+.book_card_img img{
+    width: 300px;
+}
+.book_card_img{
+    padding: 50px 100px;
+    margin-right: 50px;
+    background: #8a703e26;
+}
+.book_card_info{
+    padding: 25px;
+}
+.book_categories{
+    font-weight: normal;
+    font-size: 18px;
+}
+.book_authors{
+    text-decoration: underline #69676360;
+    font-weight: lighter;
+    font-size: 18px;
+}
+.book_description{
+    min-width: 700px;
+    min-height: 200px;
+    font-weight: 500;
+    padding: 20px;
+    margin-top: 20px;
+    border: 1px solid black;
+}

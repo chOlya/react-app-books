@@ -34,4 +34,4 @@ newest - возвращает результаты в порядке от сам
 
 ## Внешний вид приложения 
 
-![Alt text] (https://github.com/chOlya/react-app-books/blob/master/screenshots/screen1.png)
+![Скриншот](https://github.com/chOlya/react-app-books/blob/master/screenshots/screen1.png)

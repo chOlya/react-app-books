@@ -1,24 +1,45 @@
+.container{
+    max-width: 1200px;
+}
 .book_card_row{
     display: flex;
-    flex-wrap: wrap;
 }
 .book_card{
     display: flex;
+    flex-wrap: wrap; 
+    justify-content: space-between;   
+}
+@media (max-width:1200px){
+    .container{
+        max-width: 970px;
+    }
+}
+@media (max-width:992px){
+    .container{
+        max-width: 750px;
+    }
+}
+@media (max-width:767px){
+    .container{
+        max-width: none;
+    }
 }
 .book_card_img img{
-    width: 300px;
+     width: 90%; 
 }
 .book_card_img{
-    padding: 50px 100px;
-    margin-right: 50px;
+    flex: 0 1 25%;
+    padding: 50px 110px;
     background: #8a703e26;
 }
 .book_card_info{
-    padding: 25px;
+    flex: 0 1 55%;
+    padding: 10px;
 }
 .book_categories{
     font-weight: normal;
     font-size: 18px;
+    padding: 20px 0 ;
 }
 .book_authors{
     text-decoration: underline #69676360;
@@ -26,10 +47,10 @@
     font-size: 18px;
 }
 .book_description{
-    min-width: 700px;
-    min-height: 200px;
+    max-width: 100%;
+    
     font-weight: 500;
     padding: 20px;
-    margin-top: 20px;
+    margin: 30px 20px 0 0;
     border: 1px solid black;
 }

@@ -31,3 +31,7 @@ newest - возвращает результаты в порядке от сам
 ### `npm start`
 
 Приложение будет запущено.
+
+## Внешний вид приложения 
+
+![Скриншот] (https://github.com/chOlya/react-app-books/blob/master/screenshots/screen1.png)

@@ -1,13 +1,12 @@
 import React from 'react';
 import { useParams } from 'react-router';
-import BookCardContainer from './BookCardContainer';
+import BookCardWithHooks from './BookCardWithHooks';
 
 function GetId() {
     const { id } = useParams();
-    debugger;
     return (
         <div>
-            <BookCardContainer userId={id} />
+            <BookCardWithHooks userId={id} />
         </div>
     );
 }

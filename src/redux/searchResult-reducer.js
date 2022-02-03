@@ -6,17 +6,14 @@ const SET_TOTAL_ITEMS = 'SET-TOTAL-ITEMS';
 const TOGGLE_IS_FETCHING = 'TOGGLE-IS-FETCHING';
 const SET_BOOK_CARD = 'SET-BOOK-CARD';
 const LOAD_MORE = 'LOAD-MORE';
-const INCREASE_BOOKS_COUNT = 'INCREASE-BOOKS-COUNT';
 const SET_FETCH_ERROR = 'SET_FETCH_ERROR';
 const CLEAN_RESULTS = 'CLEAN-RESULTS';
 
 let initialState = {
     results: [],
     totalItems: 0,
-    selfLink: '',
     isFetching: true,
     bookCard: null,
-    booksCount: 30,
     isFetchError: false,
 };
 
@@ -62,18 +59,14 @@ const searchResultsReducer = (state = initialState, action) => {
                 results: [...state.results, ...action.moreBooks],
             }
         }
-        case INCREASE_BOOKS_COUNT: {
-            return {
-                ...state,
-                booksCount: state.booksCount + 30,
-            }
-        }
+
         case SET_FETCH_ERROR: {
             return {
                 ...state,
                 isFetchError: action.isError,
             }
         }
+
         case CLEAN_RESULTS: {
             return {
                 ...state,
@@ -92,7 +85,6 @@ export const setTotalItems = (totalItems) => ({ type: SET_TOTAL_ITEMS, totalItem
 export const toggleIsFetching = (isFetching) => ({ type: TOGGLE_IS_FETCHING, isFetching });
 export const setBookCard = (bookCard) => ({ type: SET_BOOK_CARD, bookCard });
 export const loadMore = (moreBooks) => ({ type: LOAD_MORE, moreBooks });
-export const increaseBooksCount = () => ({ type: INCREASE_BOOKS_COUNT })
 export const setFetchError = (isError) => ({ type: SET_FETCH_ERROR, isError })
 export const cleanResults = () => ({ type: CLEAN_RESULTS, })
 
@@ -135,7 +127,6 @@ export const loadMoreBooks = (booksCount, previousState, searchString) => {
         try {
             dispatch(setFetchError(false));
             let response = await bookAPI.loadMoreButton(booksCount, searchString);
-            dispatch(increaseBooksCount());
             dispatch(loadMore(response.data.items, previousState));
         } catch (e) {
             dispatch(setFetchError(true));

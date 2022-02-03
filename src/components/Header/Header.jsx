@@ -17,7 +17,6 @@ const Header = (props) => {
     let onSortingSelection = (e) => {
         let orderBy = e.target.value;
         props.sortingSelection(orderBy);
-        console.log(orderBy);
     }
 
     let onPushSearchButton = () => {
@@ -33,8 +32,8 @@ const Header = (props) => {
         <div className={s.header}>
             <h1 className={s.title}>Search for books</h1>
             <form className={s.search}>
-                <textarea className={s.search_bookname} onChange={onUpdateSearchText} value={newSearchStringBody} />
-                <NavLink to='/results'><button className={s.search_button} onClick={onPushSearchButton} onKeyPress={onPushEnter} ></button></NavLink>
+                <input className={s.search_bookname} onChange={onUpdateSearchText} onKeyPress={onPushEnter} autoFocus={true} value={newSearchStringBody} />
+                <NavLink to='/results'><button className={s.search_button} onClick={onPushSearchButton} ></button></NavLink>
             </form>
             <div className={s.options}>
                 <div className={s.categories}> Categories

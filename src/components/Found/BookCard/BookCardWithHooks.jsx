@@ -1,7 +1,7 @@
 import Preloader from '../../common/Preloader/Preloader';
 import s from './BookCard.module.css';
 import { useDispatch, useSelector } from "react-redux";
-import { getBookCard } from "../../../redux/searchResult-reducer"; 
+import { getBookCard } from "../../../redux/searchResult-reducer";
 import React, { useEffect } from 'react';
 
 const BookCardWithHooks = (props) => {

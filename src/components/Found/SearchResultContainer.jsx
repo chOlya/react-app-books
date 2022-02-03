@@ -23,7 +23,6 @@ class SearchResultContainer extends React.Component {
     }
 
     render() {
-        console.log(this.props.isFetchError);
         return <>
             {this.props.isFetching ? <Preloader /> : null}
             <SearchResult totalItems={this.props.totalItems} results={this.props.results} onLoadMoreButton={this.onLoadMoreButton} booksCount={this.props.booksCount} />

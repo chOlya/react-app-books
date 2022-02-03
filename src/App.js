@@ -2,19 +2,17 @@ import { Route, Routes } from 'react-router-dom';
 import './App.css';
 import Error from './components/common/Error/Error';
 import GetId from './components/Found/BookCard/GetId';
-import SearchResultContainer from './components/Found/SearchResultContainer';
-import Header from './components/Header/Header';
-import HeaderContainer from './components/Header/HeaderContainer';
+import SearchResultWithHooks from './components/Found/SearchResultWithHooks';
+import HeaderWithHooks from './components/Header/HeaderWithHooks';
 
 const App = () => {
   return (
     <div className='app-wrapper'>
-      <HeaderContainer />
+      <HeaderWithHooks />
       <Routes>
-        <Route path='/results' element={<SearchResultContainer />} />
+        <Route path='/results' element={<SearchResultWithHooks />} />
         <Route path='/bookCard/:id' element={<GetId />} />
         <Route path='/error' element={<Error />} />
-        <Route path='/header' element={<Header />} />
       </Routes>
     </div>
 

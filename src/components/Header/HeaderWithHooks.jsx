@@ -2,6 +2,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { NavLink } from 'react-router-dom';
 import { pushSearchButton, selectedCategory, sortingSelection, updateSearchText } from '../../redux/header-reducer';
 import s from './Header.module.css'
+import ButtonImage from './../../assets/images/button.png'
 
 const HeaderWithHooks = () => {
 
@@ -38,7 +39,11 @@ const HeaderWithHooks = () => {
                 <h1 className={s.title}>Search for books</h1>
                 <form className={s.search}>
                     <input className={s.search_bookname} onChange={onUpdateSearchText} onKeyPress={onPushEnter} autoFocus={true} value={newSearchStringBody} />
-                    <NavLink to='/results'><button className={s.search_button} onClick={onPushSearchButton} ></button></NavLink>
+                    <NavLink to='/results'>
+                        <button className={s.search_button} onClick={onPushSearchButton} >
+                            <img src={ButtonImage} className={s.button_img} />
+                        </button>
+                    </NavLink>
                 </form>
                 <div className={s.options}>
                     <div className={s.categories}> Categories

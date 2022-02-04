@@ -18,7 +18,7 @@ newest - возвращает результаты в порядке от сам
 
 ## Установка
 
-Приложение использует node.js.
+Приложение использует версию node.js 17.2.0.
 
 ### `git clone https://github.com/chOlya/react-app-books`
 

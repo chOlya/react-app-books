@@ -8,7 +8,7 @@ const apiKey = process.env.REACT_APP_API_KEY;
 
 export const bookAPI = {
     searchBook(searchString, orderBy, category) {
-        if (category != ' ') {
+        if (category != '') {
             return instance.get(`?maxResults=30&orderBy=${orderBy}&q=${(searchString) + '+subject:' + (category) + '&' + (apiKey)}`)
         } else {
             return instance.get(`?maxResults=30&orderBy=${orderBy}&q=${(searchString) + '&' + (apiKey)}`)

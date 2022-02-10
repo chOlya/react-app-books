@@ -66,6 +66,9 @@ const HeaderWithHooks = () => {
                     </div>
                 </div>
             </div>
+            <div className={s.header_image}>
+                <img src='https://pediaa.com/wp-content/uploads/2021/09/Poem.jpg' alt="Фоновое изображение" />
+            </div>
         </div>
     );
 }

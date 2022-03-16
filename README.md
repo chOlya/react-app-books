@@ -1,8 +1,9 @@
 ## Общая информация 
 
 Приложение написано на React & Redux.
-Документация https://developers.google.com/books/docs/v1/using.
-Для авторизации запросов к API выбран способ с предоставлением API key https://developers.google.com/books/docs/v1/using#APIKey. Необходимо в папке проекта создать файл .env, где API key должен быть прописан в таком формате: REACT_APP_API_KEY=your_api_key.
+
+Документация используемого в проекте Google Books API https://developers.google.com/books/docs/v1/using.
+Для авторизации запросов к API выбран способ с предоставлением API key https://developers.google.com/books/docs/v1/using#APIKey. В папке проекта необходимо создать файл .env, где API key должен быть прописан в таком формате: REACT_APP_API_KEY=your_api_key.
 
 ##  Функционал
 

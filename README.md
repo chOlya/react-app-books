@@ -20,17 +20,17 @@ newest - возвращает результаты в порядке от сам
 ## Установка
 
 Приложение использует версию node.js 17.2.0.
-
-### `git clone https://github.com/chOlya/react-app-books.git`
-
+```
+ `git clone https://github.com/chOlya/react-app-books.git`
+```
 Затем перейти в скаченный проект.
-
-### `npm install`
-
+```
+`npm install`
+```
 Для запуска введите 
-
-### `npm start`
-
+```
+`npm start`
+```
 Приложение будет запущено.
 
 ## Внешний вид приложения 
